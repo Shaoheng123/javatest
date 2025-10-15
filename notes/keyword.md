@@ -172,5 +172,70 @@ removeAll
 
 Iterate:
 Enum.values()
-1Z    
 
+<h2>Usage</h2>
+<h3> Design Patterns</h3>
+1. Singleton Pattern
+- Enum implements the serializable interface
+- Only defined constants instantiated, guaranteed single instance
+- Immune to Reflection creating another class
+
+2. Strategy Pattern
+- use Enum to represent different strategies
+- Lambdas with enum to represent different strategies
+  - `PizzaStatus.contains(s.getStatus().collect(Collectors.toList()))` 
+
+<h2> Jackson</h2>
+Serialize object to json format
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonProperty("timeToDelivery")
+
+<h2>Sealing (Java 17)</h2>
+Define permitted subtypes
+<h2>Constraints</h2>
+1. All permitted subclasses in the same module as superclass.  
+2. Every permitted subclass must explicitly extend sealed class
+3. All subclass must define a modifier
+
+<h2>Usage</h2>
+Permitted subclass
+```
+if (vehicle instanceof Car) {
+    return ((Car) vehicle).getNumberOfSeats();
+```
+
+Pattern Matching
+```
+if(vehicle instanceof Car car) {
+    return car.getNumberOfSeats
+} else {
+    throw new RuntimeException
+}
+```
+throw Runtime Exception if not covered
+<h2>Records</h2>
+
+final
+<h2>Reflection</h2>
+`isSealed()`
+`getPermittedSubclasses`
+
+<h2>Transient</h2>
+Do not serialize
+value is 0 or null
+
+<h2>Usage</h2>
+Derived Fields(subclass)
+Fields that does not represent object state
+Non-serializable reference
+storing sensitive information
+
+<h2>Final</h2>
+value not lost because it's a compile-time constant
+reinitialize during class loading
+
+<h2> new String();</h2>
+
+`private final transient String bookCategoryNewOperator = new String("Fiction with new Operator");`
+
+Not serialized JVM does not reinitialize, null input
