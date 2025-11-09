@@ -239,3 +239,97 @@ reinitialize during class loading
 `private final transient String bookCategoryNewOperator = new String("Fiction with new Operator");`
 
 Not serialized JVM does not reinitialize, null input
+
+<h2> Instance Of</h2>
+
+used before casting unknown object avoid ClassCastException
+`object.instanceOf(type)`
+Instance of Class, Subclass or Interface
+
+Instance.of(null) is null
+Don't need null check 
+
+<h3>Generic</h3>
+
+- Primitive
+- Non-Generic classes and interfaces
+- Generic types
+- Raw types
+- Arrays of other reifiable types
+
+`if (collection instanceof List<?>)`
+
+ClassCastException will be raised as a Circle is not a Ring
+
+```
+Stream<Round> roundStream = Stream.of(new Ring(), new Ring(), new Circle());
+
+assertThrows(ClassCastException.class, () -> roundStream.map(it -> (Ring) it).collect(Collectors.toList()));
+```
+Filter out those that are not ring before mapping
+
+```
+Stream<Round> roundStream = Stream.of(new Ring(), new Ring(), new Circle());
+
+
+List<Ring> ringList = roundStream.filter(it -> it instanceof Ring).map(it -> (Ring) it).collect(Collectors.toList());
+```
+<h2>TypeCasting</h2>
+<h3> Primitive</h3>
+Conversion of primitive means irreversible changes in value
+<h3>Reference</h3>
+Upcasting narrows lists of methods and properties available
+Downcasting extend it
+
+<h3> Upcasting</h3>
+casting from subclass to superclass
+Implicitly done automatically
+restrict number of methods available to Cat instance
+cannot use subclass methods
+
+<h3> Upcasting to an interface</h3>
+- Refer to object if object is same type as variable or subtype
+- Upcasting happens implicity
+- Polymorphic and can be treated as objects of supertype due to upcasting.
+
+To use subclass method have to downcast to the method
+
+If they are not a inheritance tree relationship, ClassCastException.
+
+```
+if (Cat.class.isInstance(animal)) {
+
+    Cat cat = Cat.class.cast(animal); 
+    cat.meow();
+}
+
+```
+feed() method checks animal and returns instance of T
+
+```
+public AnimalFeederGeneric(Class<T> type) { this.type = type; }
+
+Class instance passed to generic as constructor
+
+ 
+
+Animals.forEach(animal -> {
+
+if (type.isInstance(animal)) {
+
+T objAsType = type.cast(animal); list.add(objAsType);
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
