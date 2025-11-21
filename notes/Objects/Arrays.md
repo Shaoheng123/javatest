@@ -53,7 +53,7 @@ int[] arr = int arr[];
 - 
 <h3>Array methods</h3>
 - `Arrays.fill(array,value)`
-- `Arrays.fill(array,start,end,value)`
+ - `Arrays.fill(array,start,end,value)`
 - `Arrays.copyOf(array,length);`
 -`Arrays.setAll();`
 - `Arrays.setAll(array,i-> i*2)`

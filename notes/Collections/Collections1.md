@@ -109,6 +109,25 @@ while(it.hasPrevious()) {
 
 - Add : `add()`, `addFirst()`,`addLast()`
 - Remove : `remove()`, `removeFirst();`,`removeLast()`,`removeFirstOccurence(object)`,`removeLastOccurence()`
-- Queue
-- Insert
-- Convert
+- Queue: `poll()`, `pop()`,`push()`
+- Insert: `add(index,element)`
+- Convert to list:`Arrays.asList();` `Collections.addAll(linkedList,array)`,`new LinkedList<>(list)`
+
+LinkedList : Good for frequent insertion/Deletion
+
+<h2>Generic Operator(Java 7)</h2>
+
+- infer type parameter from context
+- Explicit type declaration help avoid raw time and runtime error
+- Works with complex generic types and type safety
+- by inferring based on context
+- Complex Genetic: Map<String,List<>Map<>String,Map<String,Integer>>
+
+Type Inference
+
+`Car<Diesel = new Car<>();`
+
+Interface
+- `public class Diesel implements Engine{}`
+- `public class Car<T extends Engine> implements Vehicle<T>`
+- `infer type and determine constructor`
